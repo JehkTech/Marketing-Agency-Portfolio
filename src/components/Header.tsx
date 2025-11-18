@@ -22,7 +22,7 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
       <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <div className="text-lg sm:text-xl font-bold tracking-tight bg-gradient-to-r from-lime-400 to-emerald-500 bg-clip-text text-transparent">
-            KINETIC MEDIA ARTS
+            KINERTIC MEDIA ARTS
           </div>
           
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">

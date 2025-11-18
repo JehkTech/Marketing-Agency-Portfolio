@@ -56,7 +56,7 @@ export function Reviews() {
               </div>
               
               <blockquote className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-8">
-                "Working with Kinetic Media Arts transformed our digital presence. Their creative approach and technical expertise delivered results beyond our expectations. Truly exceptional service!"
+                "Working with Kinertic Media Arts transformed our digital presence. Their creative approach and technical expertise delivered results beyond our expectations. Truly exceptional service!"
               </blockquote>
               
               <div className="flex items-center gap-4">

@@ -21,7 +21,7 @@ export function Footer() {
           >
             <div className="mb-6">
               <h3 className="text-lg sm:text-xl bg-gradient-to-r from-lime-400 to-emerald-500 bg-clip-text text-transparent mb-4">
-                KINETIC MEDIA ARTS
+                KINERTIC MEDIA ARTS
               </h3>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 Transforming digital visions into reality. Your partner in creative excellence.
@@ -61,8 +61,8 @@ export function Footer() {
               
               <div className="flex items-center gap-3 group">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-lime-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <a href="mailto:hello@kineticmediaarts.com" className="text-xs sm:text-sm text-muted-foreground hover:text-lime-400 transition-colors">
-                  hello@kineticmediaarts.com
+                <a href="mailto:hello@kinerticmediaarts.com" className="text-xs sm:text-sm text-muted-foreground hover:text-lime-400 transition-colors">
+                  hello@kinerticmediaarts.com
                 </a>
               </div>
               
@@ -109,7 +109,7 @@ export function Footer() {
             <a href="#terms" className="hover:text-lime-400 transition-colors">Terms of Service</a>
           </p>
           <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-right">
-            © 2024 Kinetic Media Arts. All rights reserved.
+            © 2024 Kinertic Media Arts. All rights reserved.
           </p>
         </div>
       </div>
