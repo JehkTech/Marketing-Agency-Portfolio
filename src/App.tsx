@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { Portfolio } from './components/Portfolio';
+import { AboutUs } from './components/AboutUs';
+import { VisionMissionValues } from './components/VisionMissionValues';
 import { Services } from './components/Services';
-import { ClientTable } from './components/ClientTable';
-import { Reviews } from './components/Reviews';
-import { Pricing } from './components/Pricing';
+import { CaseStudy } from './components/CaseStudy';
+import { Team } from './components/Team';
+import { Clientele } from './components/Clientele';
+import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ScrollProgress } from './components/ScrollProgress';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -43,11 +45,13 @@ export default function App() {
       <Header isDark={isDark} toggleTheme={toggleTheme} />
       <main className="relative">
         <Hero />
-        <Portfolio />
+        <AboutUs />
+        <VisionMissionValues />
         <Services />
-        <ClientTable />
-        <Reviews />
-        <Pricing />
+        <CaseStudy />
+        <Team />
+        <Clientele />
+        <Contact />
       </main>
       <Footer />
     </div>

@@ -1,13 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
-import { Moon, Sun, ChevronDown, Menu, X } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from './ui/dropdown-menu';
-import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 
 interface HeaderProps {
   isDark: boolean;
@@ -15,96 +8,197 @@ interface HeaderProps {
 }
 
 export function Header({ isDark, toggleTheme }: HeaderProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+      setOpenDropdown(null);
+    }
+  };
 
   return (
-    <header className="border-b border-border/10 bg-gradient-to-r from-background via-background/95 to-background backdrop-blur-md sticky top-0 z-50 shadow-sm">
-      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
-        <div className="flex items-center justify-between">
-          <div className="text-lg sm:text-xl font-bold tracking-tight bg-gradient-to-r from-lime-400 to-emerald-500 bg-clip-text text-transparent">
-            KINERTIC MEDIA ARTS
-          </div>
-          
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center space-x-1 hover:text-lime-400 transition-colors text-sm">
-                <span>HOME 1</span>
-                <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-card/95 backdrop-blur-md border-border/50">
-                <DropdownMenuItem>Home Option 1</DropdownMenuItem>
-                <DropdownMenuItem>Home Option 2</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-2 group"
+          >
+            <div className="relative">
+              <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">K</span>
+              </div>
+            </div>
+            <div className="hidden sm:block">
+              <div className="text-xl font-bold tracking-tight text-foreground">
+                KINERTIC
+              </div>
+              <div className="text-[10px] tracking-widest text-green-500 -mt-1">
+                MEDIA ARTS
+              </div>
+            </div>
+          </button>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8">
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors"
+            >
+              About
+            </button>
             
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center space-x-1 hover:text-lime-400 transition-colors text-sm">
-                <span>PAGES</span>
-                <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-card/95 backdrop-blur-md border-border/50">
-                <DropdownMenuItem>About Us</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>FAQ</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center space-x-1 hover:text-lime-400 transition-colors text-sm">
-                <span>SERVICES</span>
-                <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-card/95 backdrop-blur-md border-border/50">
-                <DropdownMenuItem>Digital Marketing</DropdownMenuItem>
-                <DropdownMenuItem>Branding</DropdownMenuItem>
-                <DropdownMenuItem>Web Design</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            
-            <a href="#works" className="hover:text-lime-400 transition-colors text-sm">OUR WORKS</a>
-            <a href="#contact" className="hover:text-lime-400 transition-colors text-sm">CONTACT</a>
+            <div className="relative group">
+              <button className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors flex items-center gap-1">
+                Services
+                <ChevronDown className="w-4 h-4" />
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="bg-card border border-border rounded-lg shadow-lg p-2">
+                  <button
+                    onClick={() => scrollToSection('services')}
+                    className="w-full text-left px-4 py-2 text-sm hover:bg-green-500/10 rounded transition-colors"
+                  >
+                    All Services
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => scrollToSection('case-study')}
+              className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors"
+            >
+              Case Study
+            </button>
+            <button
+              onClick={() => scrollToSection('team')}
+              className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors"
+            >
+              Team
+            </button>
+            <button
+              onClick={() => scrollToSection('clients')}
+              className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors"
+            >
+              Clients
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors"
+            >
+              Contact
+            </button>
           </nav>
-          
-          <div className="flex items-center gap-2">
+
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-4">
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               onClick={toggleTheme}
-              className="hover:bg-lime-400/10 transition-colors"
+              className="text-foreground/70 hover:text-green-500"
             >
-              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {isDark ? '☀️' : '🌙'}
             </Button>
+            <Button
+              onClick={() => scrollToSection('contact')}
+              className="bg-green-500 hover:bg-green-600 text-white font-medium px-6"
+            >
+              Get Started
+            </Button>
+          </div>
 
-            {/* Mobile Menu */}
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="lg:hidden">
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-5 w-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] bg-gradient-to-b from-background to-muted/20">
-                <nav className="flex flex-col space-y-6 mt-8">
-                  <a href="#" className="text-lg hover:text-lime-400 transition-colors" onClick={() => setIsOpen(false)}>
-                    HOME
-                  </a>
-                  <a href="#" className="text-lg hover:text-lime-400 transition-colors" onClick={() => setIsOpen(false)}>
-                    PAGES
-                  </a>
-                  <a href="#" className="text-lg hover:text-lime-400 transition-colors" onClick={() => setIsOpen(false)}>
-                    SERVICES
-                  </a>
-                  <a href="#works" className="text-lg hover:text-lime-400 transition-colors" onClick={() => setIsOpen(false)}>
-                    OUR WORKS
-                  </a>
-                  <a href="#contact" className="text-lg hover:text-lime-400 transition-colors" onClick={() => setIsOpen(false)}>
-                    CONTACT
-                  </a>
-                </nav>
-              </SheetContent>
-            </Sheet>
+          {/* Mobile Menu Button */}
+          <div className="flex items-center gap-3 lg:hidden">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleTheme}
+              className="text-foreground/70"
+            >
+              {isDark ? '☀️' : '🌙'}
+            </Button>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-foreground"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden bg-background border-t border-border">
+          <div className="px-4 py-6 space-y-4">
+            <button
+              onClick={() => scrollToSection('about')}
+              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
+            >
+              About
+            </button>
+            <button
+              onClick={() => scrollToSection('services')}
+              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
+            >
+              Services
+            </button>
+            <button
+              onClick={() => scrollToSection('case-study')}
+              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
+            >
+              Case Study
+            </button>
+            <button
+              onClick={() => scrollToSection('team')}
+              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
+            >
+              Team
+            </button>
+            <button
+              onClick={() => scrollToSection('clients')}
+              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
+            >
+              Clients
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
+            >
+              Contact
+            </button>
+            <Button
+              onClick={() => scrollToSection('contact')}
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-medium"
+            >
+              Get Started
+            </Button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
