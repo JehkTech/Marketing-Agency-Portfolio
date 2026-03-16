@@ -1,12 +1,14 @@
-import { type ClassValue, clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+/**
+ * Utility Functions
+ * Helper functions for common operations
+ */
 
 /**
- * Utility function to merge Tailwind CSS classes
- * Handles conflicts and deduplication
+ * Merge className strings
+ * Simple alternative to clsx/classnames
  */
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+export function cn(...classes: (string | undefined | null | false)[]): string {
+  return classes.filter(Boolean).join(' ')
 }
 
 /**
@@ -56,4 +58,18 @@ export function debounce<T extends (...args: any[]) => any>(
 export function truncate(str: string, length: number): string {
   if (str.length <= length) return str
   return str.slice(0, length) + '...'
+}
+
+/**
+ * Sleep/delay function
+ */
+export function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+/**
+ * Generate random ID
+ */
+export function generateId(): string {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36)
 }

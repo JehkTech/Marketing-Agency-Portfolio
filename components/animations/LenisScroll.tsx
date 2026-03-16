@@ -1,5 +1,3 @@
-// components/animations/LenisScroll.tsx
-
 'use client'
 
 import { useEffect } from 'react'
@@ -9,14 +7,6 @@ import Lenis from '@studio-freight/lenis'
  * LenisScroll Component
  * 
  * Implements smooth scrolling across the entire application
- * Uses Lenis library for butter-smooth scroll experience
- * 
- * Features:
- * - Smooth scroll interpolation
- * - Touch device optimization
- * - Reduced motion support
- * 
- * @param children - React children to wrap
  */
 
 export default function LenisScroll({ children }: { children: React.ReactNode }) {
@@ -25,7 +15,7 @@ export default function LenisScroll({ children }: { children: React.ReactNode })
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     
     if (prefersReducedMotion) {
-      return // Don't initialize smooth scroll if user prefers reduced motion
+      return
     }
 
     const lenis = new Lenis({
@@ -35,7 +25,6 @@ export default function LenisScroll({ children }: { children: React.ReactNode })
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
     })

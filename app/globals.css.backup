@@ -104,53 +104,8 @@ html.lenis {
 
 .animate-gradient {
   background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
+  animation: gradient-shift 8s ease infinite;
 }
-
-/* Gradient animation for premium progress bar */
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
-}
-/* ```
-
----
-
-## 📊 Visual Previews
-
-### Progress Bar Styles:
-
-**Standard:**
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░ (50%)
-    ✨ (subtle glow)
-```
-
-**Premium:**
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░ (50%)
-    ✨✨✨ (multi-layer glow)
-        ⚪ (animated moving dot)
-○ ○ ● ○ ○  (section indicators)
-```
-
-**Particles:**
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░ (50%)
-  ✦ ✧ ★ ✦ ✧ (trailing particles) */
-
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {

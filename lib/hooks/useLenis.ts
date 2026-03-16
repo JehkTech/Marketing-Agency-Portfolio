@@ -6,16 +6,12 @@ import Lenis from '@studio-freight/lenis'
 /**
  * Custom hook for Lenis smooth scrolling
  * Handles initialization and cleanup
- * 
- * @param options - Lenis configuration options
- * @returns Lenis instance
  */
 
 interface UseLenisOptions {
   duration?: number
   easing?: (t: number) => number
   smoothWheel?: boolean
-  smoothTouch?: boolean
 }
 
 export function useLenis(options: UseLenisOptions = {}) {
@@ -26,7 +22,6 @@ export function useLenis(options: UseLenisOptions = {}) {
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: options.smoothWheel !== undefined ? options.smoothWheel : true,
-      smoothTouch: options.smoothTouch !== undefined ? options.smoothTouch : false,
       wheelMultiplier: 1,
       touchMultiplier: 2,
       infinite: false,
@@ -42,5 +37,5 @@ export function useLenis(options: UseLenisOptions = {}) {
     return () => {
       lenis.destroy()
     }
-  }, [options.duration, options.easing, options.smoothWheel, options.smoothTouch])
+  }, [options.duration, options.easing, options.smoothWheel])
 }

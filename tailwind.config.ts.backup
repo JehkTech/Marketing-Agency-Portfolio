@@ -1,3 +1,4 @@
+// tailwind.config.ts
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -10,21 +11,21 @@ const config: Config = {
     extend: {
       colors: {
         kinertic: {
-          black: '#0D1F0D',
-          white: '#F0FDF4',
-          gold: '#84CC16',
-          'gold-light': '#BEF264',
-          blue: '#15803D',
-          purple: '#22C55E',
+          black: '#0A0A0A',
+          white: '#FAFAFA',
+          gold: '#D4AF37',
+          'gold-light': '#F2D06B',
+          blue: '#3B82F6',
+          purple: '#8B5CF6',
         },
       },
       fontFamily: {
         sans: ['var(--font-inter)'],
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #15803D 0%, #22C55E 100%)',
-        'gradient-gold': 'linear-gradient(135deg, #84CC16 0%, #BEF264 100%)',
-        'gradient-mesh': 'radial-gradient(at 0% 0%, #15803D 0px, transparent 50%), radial-gradient(at 100% 0%, #22C55E 0px, transparent 50%), radial-gradient(at 100% 100%, #15803D 0px, transparent 50%)',
+        'gradient-primary': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        'gradient-gold': 'linear-gradient(135deg, #D4AF37 0%, #F2D06B 100%)',
+        'gradient-mesh': 'radial-gradient(at 0% 0%, #667eea 0px, transparent 50%), radial-gradient(at 100% 0%, #764ba2 0px, transparent 50%), radial-gradient(at 100% 100%, #3B82F6 0px, transparent 50%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',

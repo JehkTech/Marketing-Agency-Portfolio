@@ -181,7 +181,7 @@ export default function Contact() {
                       type="submit"
                       size="lg"
                       className="w-full"
-                      disabled={isSubmitting}
+                      // disabled={isSubmitting}
                     >
                       {isSubmitting ? (
                         <span className="flex items-center justify-center">
