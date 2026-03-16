@@ -131,7 +131,7 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex gap-6">
               {navigation.social.map((item) => (
-                
+                <a
                   key={item.name}
                   href={item.href}
                   target="_blank"
