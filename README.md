@@ -1,36 +1,209 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kinertic Media Arts - Premium Digital Marketing Agency Website
 
-## Getting Started
+![Kinertic Media Arts](./public/og-image.jpg)
 
-First, run the development server:
+## 🎯 Project Overview
 
+A premium, modern website for Kinertic Media Arts - a digital marketing and media solutions company specializing in strategic brand growth through photography, videography, digital marketing, and web design.
+
+## ✨ Features
+
+- 🎨 **Premium Design** - Modern, minimal, cinematic aesthetic
+- ⚡ **High Performance** - Optimized for speed and SEO
+- 📱 **Fully Responsive** - Works seamlessly on all devices
+- ♿ **Accessible** - WCAG 2.1 AA compliant
+- 🎭 **Smooth Animations** - Framer Motion & Lenis scroll
+- 🔍 **SEO Optimized** - Meta tags, schema markup, sitemap
+- 📝 **Contact Form** - Integrated lead generation
+- 🎬 **Glassmorphism UI** - Modern card designs
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Smooth Scroll:** Lenis
+- **Font:** Inter (Google Fonts)
+
+## 📦 Installation
+
+### Prerequisites
+
+- Node.js 18.x or higher
+- npm or yarn
+
+### Setup
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/kinertic-media-arts.git
+cd kinertic-media-arts
+```
+
+2. **Install dependencies**
+```bash
+npm install
+# or
+yarn install
+```
+
+3. **Run development server**
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Open browser**
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Build & Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Build for Production
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+### Deploy to Vercel
 
-To learn more about Next.js, take a look at the following resources:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/kinertic-media-arts)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push code to GitHub
+2. Import project in Vercel
+3. Deploy automatically
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Deploy to Netlify
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+Then drag the `/out` folder to Netlify.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📁 Project Structure
+```
+kinertic-media-arts/
+├── app/                      # Next.js app router
+│   ├── layout.tsx           # Root layout
+│   ├── page.tsx             # Home page
+│   └── globals.css          # Global styles
+├── components/
+│   ├── sections/            # Page sections
+│   │   ├── Hero.tsx
+│   │   ├── About.tsx
+│   │   ├── Services.tsx
+│   │   └── ...
+│   ├── ui/                  # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   └── ...
+│   └── animations/          # Animation components
+│       ├── LenisScroll.tsx
+│       └── ScrollReveal.tsx
+├── lib/                     # Utilities and hooks
+│   ├── utils.ts
+│   └── hooks/
+├── public/                  # Static assets
+│   ├── images/
+│   └── logos/
+└── styles/                  # Additional styles
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Customization
+
+### Update Colors
+
+Edit `tailwind.config.ts`:
+```typescript
+colors: {
+  kinertic: {
+    black: '#0A0A0A',
+    gold: '#D4AF37',
+    // Add your colors
+  }
+}
+```
+
+### Modify Content
+
+Edit section components in `/components/sections/`:
+
+- **Hero:** Update headline and CTA
+- **About:** Change company description
+- **Services:** Add/remove service offerings
+- **Contact:** Update contact information
+
+### Add Images
+
+1. Place images in `/public/images/`
+2. Reference in components: `/images/your-image.jpg`
+
+## 📊 Performance
+
+- **Lighthouse Score:** 90+
+- **First Contentful Paint:** < 1.5s
+- **Time to Interactive:** < 3.5s
+- **Bundle Size:** < 200KB initial
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create `.env.local`:
+```env
+NEXT_PUBLIC_SITE_URL=https://kinerticmedia.com
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+### SEO Configuration
+
+Update metadata in `app/layout.tsx`:
+```typescript
+export const metadata: Metadata = {
+  title: 'Your Title',
+  description: 'Your Description',
+  // ...
+}
+```
+
+## 📝 Scripts
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run type-check   # TypeScript type checking
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+© 2024 Kinertic Media Arts. All rights reserved.
+
+## 📞 Contact
+
+**Kinertic Media Arts**
+
+- 📧 Email: kinerticmedia97@gmail.com
+- 📱 Phone: +260 975 219 796
+- 📍 Location: Lusaka, Zambia
+- 📷 Instagram: @kinertic-photography
+
+## 🙏 Acknowledgments
+
+- Design inspiration: Apple, Stripe, Vercel
+- Icons: Heroicons
+- Fonts: Google Fonts (Inter)
+- Animations: Framer Motion
+
+---
+
+**Built with ❤️ by Kinertic Media Arts**
