@@ -58,7 +58,7 @@ export default function Team() {
       bio: 'Captures brand stories with a cinematic eye across photo and video.',
       image: '/images/6M2B3651.jpg',
       social: {
-        instagram: 'https://instagram.com/kinerticmedia',
+        instagram: 'https://www.instagram.com/kinertic_marketing/',
         twitter: 'https://twitter.com/kinerticmedia',
       },
     },
@@ -82,7 +82,7 @@ export default function Team() {
           centered
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {team.map((member, index) => (
             <ScrollReveal key={index} variant="fadeUp" delay={index * 0.1}>
               <Card hover className="text-center">

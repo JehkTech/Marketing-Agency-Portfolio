@@ -288,12 +288,12 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold mb-1">Social Media</h4>
                     <a 
-                      href="https://instagram.com/kinerticmedia" 
+                      href="https://www.instagram.com/kinertic_marketing/" 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-kinertic-gold transition-colors"
                     >
-                      @kinerticmedia
+                      @kinertic_marketing
                     </a>
                   </div>
                 </div>
