@@ -267,12 +267,12 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold mb-1">Social Media</h4>
                     <a 
-                      href="https://instagram.com/kinertic-photography" 
+                      href="https://instagram.com/kinerticmedia" 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-kinertic-gold transition-colors"
                     >
-                      @kinertic-photography
+                      @kinerticmedia
                     </a>
                   </div>
                 </div>

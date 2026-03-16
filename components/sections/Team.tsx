@@ -25,43 +25,50 @@ import SectionHeader from '@/components/ui/SectionHeader'
 export default function Team() {
   const team = [
     {
-      name: 'Sarah Mwansa',
-      role: 'Creative Director',
-      bio: 'Award-winning creative with 10+ years shaping brand narratives for global and local clients.',
-      image: '/team-1.jpg',
+      name: 'Willard Phiri',
+      role: 'Founder & Creative Director',
+      bio: 'Leads creative strategy and brand storytelling across video, photo, and design.',
+      image: '/images/KIN05484.JPG',
       social: {
-        linkedin: '#',
-        twitter: '#',
+        linkedin: 'https://www.linkedin.com/in/willard-phiri',
+        twitter: 'https://twitter.com/willardphiri',
       },
     },
     {
-      name: 'Michael Banda',
-      role: 'Lead Photographer',
-      bio: 'Specializes in corporate and commercial photography with a cinematic eye for detail.',
-      image: '/team-2.jpg',
+      name: 'Praise Ngulube',
+      role: 'Marketing & Accountant',
+      bio: 'Balances growth strategy with financial clarity to keep campaigns profitable.',
+      image: '/images/6M2B3586.jpg',
       social: {
-        linkedin: '#',
-        instagram: '#',
+        linkedin: 'https://www.linkedin.com/in/praise-ngulube',
       },
     },
     {
-      name: 'Grace Phiri',
-      role: 'Digital Marketing Strategist',
-      bio: 'Data-driven marketer helping brands achieve measurable growth through strategic campaigns.',
-      image: '/team-3.jpg',
+      name: 'Jehoiachin Katemangwe',
+      role: 'Developer & Creative',
+      bio: 'Builds digital experiences that blend performance with polished design.',
+      image: '/images/6M2B3648.jpg',
       social: {
-        linkedin: '#',
-        twitter: '#',
+        twitter: 'https://twitter.com/jehoiachin',
       },
     },
     {
-      name: 'David Tembo',
-      role: 'Lead Videographer',
-      bio: 'Creates compelling video content that tells stories and drives engagement.',
-      image: '/team-4.jpg',
+      name: 'Jesse Chibuye',
+      role: 'Photographer & Creative',
+      bio: 'Captures brand stories with a cinematic eye across photo and video.',
+      image: '/images/6M2B3651.jpg',
       social: {
-        linkedin: '#',
-        instagram: '#',
+        instagram: 'https://instagram.com/kinerticmedia',
+        twitter: 'https://twitter.com/kinerticmedia',
+      },
+    },
+    {
+      name: 'Paul Daka',
+      role: 'Operations & Creative',
+      bio: 'Keeps projects running smoothly while maintaining high creative standards.',
+      image: '/images/6M2B3655.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/paul-daka',
       },
     },
   ]
@@ -79,11 +86,13 @@ export default function Team() {
           {team.map((member, index) => (
             <ScrollReveal key={index} variant="fadeUp" delay={index * 0.1}>
               <Card hover className="text-center">
-                {/* Avatar Placeholder */}
-                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-kinertic-gold/20 to-kinertic-purple/20 flex items-center justify-center overflow-hidden">
-                  <svg className="w-20 h-20 text-kinertic-gold/50" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                  </svg>
+                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-kinertic-gold/20 to-kinertic-purple/20 overflow-hidden shadow-inner">
+                  <img
+                    src={member.image}
+                    alt={`${member.name} headshot`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
 
                 <h3 className="text-xl font-bold mb-1">{member.name}</h3>

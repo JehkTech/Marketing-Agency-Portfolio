@@ -277,15 +277,12 @@ vercel --prod
 
 - [ ] Run `npm install` to install dependencies
 - [ ] Run `npm run dev` to test locally
-- [ ] Add real images to `/public/images/`
-- [ ] Add client logos to `/public/logos/`
-- [ ] Update team information
-- [ ] Configure contact form backend
-- [ ] Test on mobile devices
-- [ ] Run Lighthouse audit
-- [ ] Set up Google Analytics
-- [ ] Configure domain and SSL
-- [ ] Deploy to production
+- [ ] Replace artwork and/or logos in `/public/images/` and `/public/logos/`
+- [ ] Update component references if you rename assets
+- [ ] Configure contact form backend (Web3Forms / Formspree / custom API)
+- [ ] Test responsiveness across devices
+- [ ] Run Lighthouse audit for performance + accessibility
+- [ ] Configure domain + deploy (Vercel, Netlify, etc.)
 
 ---
 

@@ -35,10 +35,10 @@ export default function Footer() {
       { name: 'Website Design', href: '#services' },
     ],
     social: [
-      { name: 'Instagram', href: 'https://instagram.com/kinertic-photography', icon: 'instagram' },
-      { name: 'Facebook', href: '#', icon: 'facebook' },
-      { name: 'LinkedIn', href: '#', icon: 'linkedin' },
-      { name: 'Twitter', href: '#', icon: 'twitter' },
+      { name: 'Instagram', href: 'https://instagram.com/kinerticmedia', icon: 'instagram' },
+      { name: 'Facebook', href: 'https://facebook.com/kinerticmedia', icon: 'facebook' },
+      { name: 'LinkedIn', href: 'https://www.linkedin.com/company/kinertic-media', icon: 'linkedin' },
+      { name: 'Twitter', href: 'https://twitter.com/kinerticmedia', icon: 'twitter' },
     ],
   }
 

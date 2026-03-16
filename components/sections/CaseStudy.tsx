@@ -29,10 +29,10 @@ export default function CaseStudy() {
   const [activeImage, setActiveImage] = useState(0)
   
   const images = [
-    '/case-study-1.jpg',
-    '/case-study-2.jpg',
-    '/case-study-3.jpg',
-    '/case-study-4.jpg',
+    '/images/6M2B3586.jpg',
+    '/images/6M2B3648.jpg',
+    '/images/6M2B3651.jpg',
+    '/images/6M2B3655.jpg',
   ]
 
   const stats = [
@@ -51,12 +51,11 @@ export default function CaseStudy() {
               <span className="text-kinertic-gold font-semibold text-sm">Featured Case Study</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-              American International School
+              Brand Launch Visual Campaign
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              A comprehensive photography and videography campaign focused on brand 
-              positioning and cinematic visual storytelling for one of Lusaka's premier 
-              educational institutions.
+              Bringing a new brand story to life through polished photography and dynamic
+              social-first content designed for modern audiences.
             </p>
           </div>
         </ScrollReveal>
@@ -73,23 +72,22 @@ export default function CaseStudy() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-gradient-to-br from-kinertic-purple/30 to-kinertic-blue/30 flex items-center justify-center"
+                  className="absolute inset-0"
                 >
-                  <div className="text-center">
-                    <div className="w-20 h-20 mx-auto mb-4 bg-kinertic-gold/20 rounded-full flex items-center justify-center">
-                      <svg className="w-10 h-10 text-kinertic-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <p className="text-gray-400">Project Image {activeImage + 1}</p>
-                  </div>
+                  <img
+                    src={images[activeImage]}
+                    alt={`Project Gallery ${activeImage + 1}`}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-kinertic-purple/40 via-transparent to-kinertic-blue/40" />
                 </motion.div>
               </AnimatePresence>
             </div>
 
             {/* Thumbnail Navigation */}
             <div className="grid grid-cols-4 gap-4">
-              {images.map((_, index) => (
+              {images.map((src, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveImage(index)}
@@ -100,10 +98,14 @@ export default function CaseStudy() {
                       : 'opacity-50 hover:opacity-100'
                     }
                   `}
+                  aria-label={`View image ${index + 1}`}
                 >
-                  <div className="w-full h-full glass-card flex items-center justify-center">
-                    <span className="text-sm text-gray-400">{index + 1}</span>
-                  </div>
+                  <img
+                    src={src}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </button>
               ))}
             </div>
@@ -117,17 +119,16 @@ export default function CaseStudy() {
             <div>
               <h3 className="text-2xl font-bold mb-4">The Challenge</h3>
               <p className="text-gray-400 leading-relaxed mb-6">
-                American International School needed to elevate their brand positioning 
-                to attract international families and showcase their world-class facilities 
-                and educational programs through compelling visual storytelling.
+                The brand needed a cohesive visual identity that could scale across social,
+                website, and campaign materials. The goal was to create imagery that felt
+                premium while staying authentic to the audience.
               </p>
 
               <h3 className="text-2xl font-bold mb-4">Our Solution</h3>
               <p className="text-gray-400 leading-relaxed">
-                We delivered a comprehensive 6-month campaign featuring cinematic 
-                photography and videography that captured the essence of student life, 
-                academic excellence, and campus culture. Our strategic approach combined 
-                brand storytelling with performance-driven content distribution.
+                We produced a suite of high-impact photos and short-form assets that highlight
+                the brand’s personality. The result is a flexible visual system ready for
+                use across digital and print channels.
               </p>
             </div>
           </ScrollReveal>
@@ -153,7 +154,7 @@ export default function CaseStudy() {
         {/* CTA */}
         <ScrollReveal variant="fadeUp" delay={0.5}>
           <div className="text-center">
-            <Button size="lg">
+            <Button size="lg" href="/portfolio">
               View Full Portfolio
             </Button>
           </div>
