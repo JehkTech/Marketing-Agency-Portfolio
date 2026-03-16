@@ -81,9 +81,19 @@ export default function Footer() {
               Premium digital marketing and media solutions delivering strategic, 
               results-driven brand growth for modern businesses.
             </p>
-            <p className="text-sm text-gray-500">
-              Established 2020 • Lusaka, Zambia
-            </p>
+            <div className="text-sm text-gray-500 space-y-1">
+              <p>Established 2020 • Lusaka, Zambia</p>
+              <p>
+                <a
+                  href="https://kinerticmediaarts.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-kinertic-gold"
+                >
+                  kinerticmediaarts.com
+                </a>
+              </p>
+            </div>
           </div>
 
           {/* Company Links */}

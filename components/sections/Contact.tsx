@@ -243,7 +243,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Location */}
+                {/* Address */}
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-kinertic-gold/20 to-kinertic-purple/20 flex items-center justify-center flex-shrink-0">
                     <svg className="w-6 h-6 text-kinertic-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -252,8 +252,29 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Location</h4>
-                    <p className="text-gray-400">Lusaka, Zambia</p>
+                    <h4 className="font-semibold mb-1">Address</h4>
+                    <p className="text-gray-400">Independence Ave, Lusaka, Zambia</p>
+                  </div>
+                </div>
+
+                {/* Website */}
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-kinertic-gold/20 to-kinertic-purple/20 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-kinertic-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.75c2.21 0 4 1.79 4 4v2.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V8.75c0-2.21 1.79-4 4-4z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6.92 11.99A6 6 0 0012 17a6 6 0 005.08-5.01" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Website</h4>
+                    <a
+                      href="https://kinerticmediaarts.com"
+                      className="text-gray-400 hover:text-kinertic-gold transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      kinerticmediaarts.com
+                    </a>
                   </div>
                 </div>
 
