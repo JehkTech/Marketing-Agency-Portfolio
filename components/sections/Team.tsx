@@ -74,7 +74,7 @@ export default function Team() {
   ]
 
   return (
-    <section className="py-20 md:py-32 bg-kinertic-black">
+    <section id="team" className="py-20 md:py-32 bg-kinertic-black">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           title="Meet Our Team"
