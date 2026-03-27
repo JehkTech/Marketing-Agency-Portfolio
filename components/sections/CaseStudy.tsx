@@ -43,7 +43,7 @@ export default function CaseStudy() {
   ]
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-kinertic-black to-kinertic-purple/10">
+    <section id="case-study" className="py-20 md:py-32 bg-gradient-to-b from-kinertic-black to-kinertic-purple/10">
       <div className="max-w-7xl mx-auto px-6">
         <ScrollReveal variant="fadeUp">
           <div className="text-center mb-16">
@@ -163,3 +163,4 @@ export default function CaseStudy() {
     </section>
   )
 }
+

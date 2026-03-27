@@ -73,7 +73,7 @@ export default function RootLayout({
         <AdvancedScrollProgressBar
           variant="premium"
           showPercentage={true}
-          showSectionDots={true}
+          showSectionDots={false}
         />
 
         <LenisScroll>{children}</LenisScroll>
@@ -81,3 +81,4 @@ export default function RootLayout({
     </html>
   );
 }
+
