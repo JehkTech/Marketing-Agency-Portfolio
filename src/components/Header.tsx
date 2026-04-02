@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface HeaderProps {
@@ -7,26 +7,54 @@ interface HeaderProps {
   toggleTheme: () => void;
 }
 
+const navLinks = [
+  { id: 'about', label: 'About' },
+  { id: 'services', label: 'Services' },
+  { id: 'process', label: 'Process' },
+  { id: 'case-study', label: 'Case Study' },
+  { id: 'testimonials', label: 'Testimonials' },
+  { id: 'team', label: 'Team' },
+  { id: 'clients', label: 'Clients' },
+  { id: 'contact', label: 'Contact' },
+];
+
 export function Header({ isDark, toggleTheme }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState('about');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      for (const link of [...navLinks].reverse()) {
+        const section = document.getElementById(link.id);
+        if (section && section.getBoundingClientRect().top <= 140) {
+          setActiveSection(link.id);
+          break;
+        }
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(id);
       setIsMobileMenuOpen(false);
-      setOpenDropdown(null);
     }
   };
 
@@ -34,21 +62,19 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm'
+          ? 'bg-background/85 backdrop-blur-md border-b border-border shadow-sm'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-2 group"
+            aria-label="Go to top"
           >
-            <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">K</span>
-              </div>
+            <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center shadow-lg shadow-green-500/20">
+              <span className="text-white font-bold text-xl">K</span>
             </div>
             <div className="hidden sm:block">
               <div className="text-xl font-bold tracking-tight text-foreground">
@@ -60,67 +86,40 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
             </div>
           </button>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors"
-            >
-              About
-            </button>
-            
-            <div className="relative group">
-              <button className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors flex items-center gap-1">
-                Services
-                <ChevronDown className="w-4 h-4" />
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="bg-card border border-border rounded-lg shadow-lg p-2">
-                  <button
-                    onClick={() => scrollToSection('services')}
-                    className="w-full text-left px-4 py-2 text-sm hover:bg-green-500/10 rounded transition-colors"
-                  >
-                    All Services
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <button
-              onClick={() => scrollToSection('case-study')}
-              className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors"
-            >
-              Case Study
-            </button>
-            <button
-              onClick={() => scrollToSection('team')}
-              className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors"
-            >
-              Team
-            </button>
-            <button
-              onClick={() => scrollToSection('clients')}
-              className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors"
-            >
-              Clients
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="text-sm font-medium text-foreground/70 hover:text-green-500 transition-colors"
-            >
-              Contact
-            </button>
+          <nav className="hidden xl:flex items-center gap-6" aria-label="Main navigation">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => scrollToSection(link.id)}
+                  className={`text-sm font-medium transition-colors ${
+                    isActive
+                      ? 'text-green-500'
+                      : 'text-foreground/70 hover:text-green-500'
+                  }`}
+                >
+                  {link.label}
+                </button>
+              );
+            })}
           </nav>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden xl:flex items-center gap-3">
+            <a
+              href="tel:+260975219796"
+              className="text-sm text-foreground/65 hover:text-green-500 transition-colors"
+            >
+              +260 975 219 796
+            </a>
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={toggleTheme}
               className="text-foreground/70 hover:text-green-500"
+              aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
             >
-              {isDark ? '☀️' : '🌙'}
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </Button>
             <Button
               onClick={() => scrollToSection('contact')}
@@ -130,19 +129,21 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-3 lg:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={toggleTheme}
               className="text-foreground/70"
+              aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
             >
-              {isDark ? '☀️' : '🌙'}
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </Button>
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-foreground"
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              className="text-foreground p-2"
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -150,49 +151,25 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-background border-t border-border">
-          <div className="px-4 py-6 space-y-4">
-            <button
-              onClick={() => scrollToSection('about')}
-              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection('services')}
-              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
-            >
-              Services
-            </button>
-            <button
-              onClick={() => scrollToSection('case-study')}
-              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
-            >
-              Case Study
-            </button>
-            <button
-              onClick={() => scrollToSection('team')}
-              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
-            >
-              Team
-            </button>
-            <button
-              onClick={() => scrollToSection('clients')}
-              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
-            >
-              Clients
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="block w-full text-left py-2 text-foreground/70 hover:text-green-500"
-            >
-              Contact
-            </button>
+        <div className="xl:hidden bg-background border-t border-border">
+          <div className="px-4 py-6 space-y-3">
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className={`block w-full text-left py-2 text-sm transition-colors ${
+                  activeSection === link.id
+                    ? 'text-green-500'
+                    : 'text-foreground/70 hover:text-green-500'
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
             <Button
               onClick={() => scrollToSection('contact')}
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-medium"
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-medium mt-2"
             >
               Get Started
             </Button>

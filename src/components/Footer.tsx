@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, Phone, Twitter } from 'lucide-react';
 
 export function Footer() {
   const scrollToSection = (id: string) => {
@@ -13,7 +13,6 @@ export function Footer() {
     <footer className="bg-gradient-to-b from-green-950 to-green-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Logo & Description */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-6">
               <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center">
@@ -21,92 +20,76 @@ export function Footer() {
               </div>
               <div>
                 <div className="text-xl font-bold tracking-tight">KINERTIC</div>
-                <div className="text-[10px] tracking-widest text-green-400 -mt-1">
-                  MEDIA ARTS
-                </div>
+                <div className="text-[10px] tracking-widest text-green-400 -mt-1">MEDIA ARTS</div>
               </div>
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              Premium digital marketing and media solutions delivering strategic, 
-              results-driven brand growth for modern businesses.
+              Premium digital marketing and media solutions delivering strategic, results-driven
+              brand growth for modern businesses.
             </p>
-            {/* Social Links */}
             <div className="flex items-center gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-green-500 flex items-center justify-center transition-all duration-300"
+                aria-label="Facebook"
               >
                 <Facebook className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="https://twitter.com/kinerticmedia"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-green-500 flex items-center justify-center transition-all duration-300"
+                aria-label="Twitter"
               >
                 <Twitter className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/kinertic_marketing/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-green-500 flex items-center justify-center transition-all duration-300"
+                aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-green-500 flex items-center justify-center transition-all duration-300"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="text-lg font-bold mb-6 text-green-400">Quick Links</h3>
             <ul className="space-y-3">
-              <li>
-                <button
-                  onClick={() => scrollToSection('about')}
-                  className="text-white/70 hover:text-green-400 transition-colors text-sm"
-                >
-                  About Us
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-white/70 hover:text-green-400 transition-colors text-sm"
-                >
-                  Services
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('case-study')}
-                  className="text-white/70 hover:text-green-400 transition-colors text-sm"
-                >
-                  Case Study
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('team')}
-                  className="text-white/70 hover:text-green-400 transition-colors text-sm"
-                >
-                  Our Team
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('clients')}
-                  className="text-white/70 hover:text-green-400 transition-colors text-sm"
-                >
-                  Clients
-                </button>
-              </li>
+              {[
+                { id: 'about', label: 'About Us' },
+                { id: 'services', label: 'Services' },
+                { id: 'process', label: 'Process' },
+                { id: 'case-study', label: 'Case Study' },
+                { id: 'testimonials', label: 'Testimonials' },
+                { id: 'contact', label: 'Contact' },
+              ].map((item) => (
+                <li key={item.id}>
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-white/70 hover:text-green-400 transition-colors text-sm"
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Services */}
           <div>
             <h3 className="text-lg font-bold mb-6 text-green-400">Services</h3>
             <ul className="space-y-3">
@@ -118,32 +101,35 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h3 className="text-lg font-bold mb-6 text-green-400">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                 <a
-                  href="mailto:Kinerticmedia97@gmail.com"
+                  href="mailto:kinerticmedia97@gmail.com"
                   className="text-white/70 hover:text-green-400 transition-colors text-sm"
                 >
-                  Kinerticmedia97@gmail.com
+                  kinerticmedia97@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                <span className="text-white/70 text-sm">+260 XXX XXX XXX</span>
+                <a
+                  href="tel:+260975219796"
+                  className="text-white/70 hover:text-green-400 transition-colors text-sm"
+                >
+                  +260 975 219 796
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/60 text-sm">
-              © 2024 Kinertic Media Arts. All rights reserved.
+              © {new Date().getFullYear()} Kinertic Media Arts. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <button className="text-white/60 hover:text-green-400 transition-colors text-sm">

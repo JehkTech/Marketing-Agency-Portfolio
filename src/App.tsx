@@ -4,13 +4,16 @@ import { Hero } from './components/Hero';
 import { AboutUs } from './components/AboutUs';
 import { VisionMissionValues } from './components/VisionMissionValues';
 import { Services } from './components/Services';
+import { Process } from './components/Process';
 import { CaseStudy } from './components/CaseStudy';
+import { Testimonials } from './components/Testimonials';
 import { Team } from './components/Team';
 import { Clientele } from './components/Clientele';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ScrollProgress } from './components/ScrollProgress';
 import { ScrollToTop } from './components/ScrollToTop';
+import { FloatingCTA } from './components/FloatingCTA';
 
 export default function App() {
   const [isDark, setIsDark] = useState(true);
@@ -46,14 +49,17 @@ export default function App() {
       <main className="relative">
         <Hero />
         <AboutUs />
-        <VisionMissionValues />
         <Services />
+        <Process />
         <CaseStudy />
+        <Testimonials />
+        <VisionMissionValues />
         <Team />
         <Clientele />
         <Contact />
       </main>
       <Footer />
+      <FloatingCTA />
     </div>
   );
 }
