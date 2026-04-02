@@ -37,10 +37,10 @@ export function Hero() {
             }`}
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-              <span className="text-foreground">WE BUILD</span>
+              <span className="text-foreground">WE POSITION</span>
               <br />
               <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
-                LIT WEBSITES
+                BRANDS TO WIN
               </span>
             </h1>
           </div>
@@ -112,9 +112,11 @@ export function Hero() {
             }`}
           >
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-              <span className="text-foreground">THAT BUILD YOUR</span>{' '}
+              <span className="text-foreground">THROUGH STRATEGY, CREATIVE</span>{' '}
+              <br className="hidden md:block" />
+              <span className="text-foreground">AND</span>{' '}
               <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
-                BUSINESS
+                PERFORMANCE
               </span>
             </h2>
           </div>
@@ -126,31 +128,46 @@ export function Hero() {
             }`}
           >
             <p className="text-lg sm:text-xl text-foreground/70 leading-relaxed">
-              Premium digital marketing and media solutions delivering strategic, 
-              results-driven brand growth for modern businesses.
+              Kinertic Media Arts is a full-service growth agency helping ambitious teams
+              turn attention into pipeline, bookings, and long-term brand equity.
             </p>
+          </div>
+
+          <div
+            className={`flex flex-wrap items-center justify-center gap-3 ${
+              isVisible ? 'animate-fade-in animation-delay-500' : 'opacity-0'
+            }`}
+          >
+            {['200+ Projects Delivered', '50+ Active Clients', '98% Client Retention', '4+ Years Experience'].map((item) => (
+              <div
+                key={item}
+                className="px-4 py-2 rounded-full border border-green-500/30 bg-green-500/10 text-sm text-foreground/85"
+              >
+                {item}
+              </div>
+            ))}
           </div>
 
           {/* CTA Buttons */}
           <div
             className={`flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 ${
-              isVisible ? 'animate-slide-up animation-delay-500' : 'opacity-0'
+              isVisible ? 'animate-slide-up animation-delay-700' : 'opacity-0'
             }`}
           >
             <Button
-              onClick={() => scrollToSection('services')}
+              onClick={() => scrollToSection('contact')}
               size="lg"
               className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold px-8 py-6 text-lg rounded-full shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300"
             >
-              View Our Services
+              Book a Strategy Call
             </Button>
             <Button
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection('case-study')}
               size="lg"
               variant="outline"
               className="border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white font-semibold px-8 py-6 text-lg rounded-full transition-all duration-300"
             >
-              Request a Quote
+              See Results
             </Button>
           </div>
         </div>

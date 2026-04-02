@@ -8,7 +8,7 @@ const teamMembers = [
     name: 'Willard Phiri',
     role: 'Founder & Creative Director',
     bio: 'Leads creative strategy and brand storytelling across video, photo, and design.',
-    image: '/images/KIN05484.JPG',
+    image: '/images/Willard.png',
     linkedin: 'https://www.linkedin.com/in/willard-phiri',
     twitter: 'https://twitter.com/willardphiri',
   },
@@ -16,28 +16,28 @@ const teamMembers = [
     name: 'Praise Ngulube',
     role: 'Marketing & Accountant',
     bio: 'Balances growth strategy with financial clarity to keep campaigns profitable.',
-    image: '/images/6M2B3586.jpg',
+    image: '/images/Praise.png',
     linkedin: 'https://www.linkedin.com/in/praise-ngulube',
   },
   {
     name: 'Jehoiachin Katemangwe',
     role: 'Developer & Creative',
     bio: 'Builds digital experiences that blend performance with polished design.',
-    image: '/images/6M2B3648.jpg',
+    image: '/images/Jehoiachin.png',
     twitter: 'https://twitter.com/jehoiachin',
   },
   {
     name: 'Jesse Chibuye',
     role: 'Photographer & Creative',
     bio: 'Captures brand stories with a cinematic eye across photo and video.',
-    image: '/images/6M2B3651.jpg',
+    image: '/images/Jesse.png',
     instagram: 'https://www.instagram.com/kinertic_marketing/',
   },
   {
     name: 'Paul Daka',
     role: 'Operations & Creative',
     bio: 'Keeps projects running smoothly while maintaining high creative standards.',
-    image: '/images/6M2B3655.jpg',
+    image: '/images/Paul.png',
     linkedin: 'https://www.linkedin.com/in/paul-daka',
   },
 ];
@@ -66,11 +66,14 @@ export function Team() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div
+          className="flex flex-nowrap gap-6 overflow-x-auto pb-4 snap-x snap-mandatory"
+          aria-label="Team members"
+        >
           {teamMembers.map((member, index) => (
             <div
               key={member.name}
-              className={`${isVisible ? `animate-scale-in animation-delay-${(index + 1) * 100}` : 'opacity-0'}`}
+              className={`min-w-[230px] flex-1 snap-start ${isVisible ? `animate-scale-in animation-delay-${(index + 1) * 100}` : 'opacity-0'}`}
             >
               <div className="glass rounded-2xl p-6 hover:scale-[1.02] transition-all duration-300 text-center h-full border border-green-500/20">
                 <div className="mb-5">

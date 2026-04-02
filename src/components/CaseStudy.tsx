@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { CheckCircle2 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Button } from './ui/button';
 
 const galleryImages = [
   '/images/6M2B3586.jpg',
@@ -16,9 +18,22 @@ const stats = [
   { label: 'Brand Reach', value: '2.5M+' },
 ];
 
+const outcomes = [
+  'Launch-ready content system for paid and organic channels',
+  'Stronger brand consistency across social, web, and campaigns',
+  'Reusable creative assets that lowered monthly production overhead',
+];
+
 export function CaseStudy() {
   const { ref, isVisible } = useScrollAnimation();
   const [activeImage, setActiveImage] = useState(0);
+
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section
@@ -44,7 +59,7 @@ export function CaseStudy() {
             </span>
           </div>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-4">
-            Brand Launch Visual Campaign
+            Growth Campaign Snapshot
           </h2>
           <div className="h-2 w-32 bg-gradient-to-r from-green-500 to-green-400 rounded-full" />
         </div>
@@ -84,13 +99,29 @@ export function CaseStudy() {
           <div className={`${isVisible ? 'animate-slide-right animation-delay-300' : 'opacity-0'}`}>
             <div className="space-y-6 text-white/90">
               <p className="text-lg leading-relaxed">
-                We produced a complete launch-ready visual package with premium photography,
-                social-first content, and strategic brand positioning for digital channels.
+                We designed and executed a full-funnel campaign system combining premium
+                visuals, conversion-focused messaging, and channel-specific distribution.
               </p>
               <p className="text-lg leading-relaxed">
-                The final system gave the client reusable assets for campaigns, website content,
-                and ad creatives while improving message consistency across channels.
+                The result was not just better-looking content, but stronger positioning,
+                better-performing campaigns, and a scalable content engine for growth.
               </p>
+
+              <div className="space-y-3 pt-2">
+                {outcomes.map((outcome) => (
+                  <div key={outcome} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-white/85 text-sm sm:text-base">{outcome}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Button
+                onClick={scrollToContact}
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 mt-2"
+              >
+                Plan My Campaign
+              </Button>
             </div>
           </div>
 

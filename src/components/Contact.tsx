@@ -23,6 +23,10 @@ export function Contact() {
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [successTitle, setSuccessTitle] = useState('Message Prepared');
+  const [successMessage, setSuccessMessage] = useState(
+    'Your email client should open with a pre-filled message.'
+  );
 
   const validate = () => {
     const nextErrors: Partial<FormData> = {};
@@ -41,15 +45,7 @@ export function Contact() {
     return Object.keys(nextErrors).length === 0;
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-
-    if (!validate()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-
+  const openMailtoFallback = () => {
     const subject = encodeURIComponent(`Project Inquiry from ${formData.name}`);
     const body = encodeURIComponent(
       [
@@ -63,10 +59,43 @@ export function Contact() {
     );
 
     window.location.href = `mailto:kinerticmedia97@gmail.com?subject=${subject}&body=${body}`;
+  };
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setFormData({ name: '', email: '', company: '', message: '' });
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (!validate()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const payload = await response.json().catch(() => null);
+
+      if (response.ok && payload?.success) {
+        setSuccessTitle('Message Sent');
+        setSuccessMessage("Message sent successfully. We'll be in touch shortly.");
+      } else {
+        openMailtoFallback();
+        setSuccessTitle('Message Prepared');
+        setSuccessMessage('Your email client should open with a pre-filled message.');
+      }
+    } catch {
+      openMailtoFallback();
+      setSuccessTitle('Message Prepared');
+      setSuccessMessage('Your email client should open with a pre-filled message.');
+    } finally {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', company: '', message: '' });
+    }
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -117,9 +146,9 @@ export function Contact() {
                   <div className="w-16 h-16 mx-auto mb-5 bg-green-500/15 rounded-full flex items-center justify-center">
                     <Send className="w-7 h-7 text-green-500" />
                   </div>
-                  <h3 className="text-2xl font-semibold text-foreground mb-2">Message Prepared</h3>
+                  <h3 className="text-2xl font-semibold text-foreground mb-2">{successTitle}</h3>
                   <p className="text-foreground/65 mb-5">
-                    Your email client should open with a pre-filled message.
+                    {successMessage}
                   </p>
                   <a
                     href={whatsappUrl}
@@ -205,7 +234,7 @@ export function Contact() {
                     className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-6 text-lg rounded-xl"
                   >
                     <Send className="w-5 h-5 mr-2" />
-                    {isSubmitting ? 'Preparing Message...' : 'Send Message'}
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
 
                   <p className="text-xs text-foreground/60 text-center">

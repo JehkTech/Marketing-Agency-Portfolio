@@ -21,7 +21,7 @@ Frontend for the Kinertic Media Arts website, built with React + Vite and styled
 ## Latest Documented Update
 
 Date: **April 2, 2026**  
-Branch: **`lightdesign`**
+Branch: **`lightdesign`** 
 
 ### Summary
 

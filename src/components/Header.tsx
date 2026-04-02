@@ -110,7 +110,7 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
               href="tel:+260975219796"
               className="text-sm text-foreground/65 hover:text-green-500 transition-colors"
             >
-              +260 975 219 796
+              Call: +260 975 219 796
             </a>
             <Button
               variant="ghost"
@@ -125,7 +125,7 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
               onClick={() => scrollToSection('contact')}
               className="bg-green-500 hover:bg-green-600 text-white font-medium px-6"
             >
-              Get Started
+              Book Strategy Call
             </Button>
           </div>
 
@@ -171,7 +171,7 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
               onClick={() => scrollToSection('contact')}
               className="w-full bg-green-500 hover:bg-green-600 text-white font-medium mt-2"
             >
-              Get Started
+              Book Strategy Call
             </Button>
           </div>
         </div>
