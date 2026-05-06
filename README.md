@@ -53,6 +53,8 @@ yarn install
 npm run dev
 # or
 yarn dev
+# or
+npx next dev
 ```
 
 4. **Open browser**
