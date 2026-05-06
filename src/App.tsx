@@ -14,9 +14,13 @@ import { Footer } from './components/Footer';
 import { ScrollProgress } from './components/ScrollProgress';
 import { ScrollToTop } from './components/ScrollToTop';
 import { FloatingCTA } from './components/FloatingCTA';
+import { PortfolioDetail } from './components/PortfolioDetail';
 
 export default function App() {
   const [isDark, setIsDark] = useState(true);
+  const [currentPath, setCurrentPath] = useState(
+    typeof window !== 'undefined' ? window.location.pathname : '/'
+  );
 
   useEffect(() => {
     // Check for saved theme preference or default to dark mode
@@ -41,6 +45,52 @@ export default function App() {
     setIsDark(!isDark);
   };
 
+  useEffect(() => {
+    const handleNavigation = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handleNavigation);
+
+    return () => {
+      window.removeEventListener('popstate', handleNavigation);
+    };
+  }, []);
+
+  const navigateTo = (path: string) => {
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, '', path);
+      setCurrentPath(path);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const openHomeAndScrollTo = (id: string) => {
+    navigateTo('/');
+
+    window.setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 60);
+  };
+
+  const portfolioMatch = currentPath.match(/^\/portfolio\/(\d+)$/);
+  const portfolioId = portfolioMatch ? Number(portfolioMatch[1]) : null;
+
+  if (portfolioId) {
+    return (
+      <div className="min-h-screen bg-background text-foreground antialiased">
+        <PortfolioDetail
+          portfolioId={portfolioId}
+          onBack={() => navigateTo('/')}
+          onBookCall={() => openHomeAndScrollTo('contact')}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
       <ScrollProgress />
@@ -51,7 +101,7 @@ export default function App() {
         <AboutUs />
         <Services />
         <Process />
-        <CaseStudy />
+        <CaseStudy onOpenPortfolio={(id) => navigateTo(`/portfolio/${id}`)} />
         <Testimonials />
         <VisionMissionValues />
         <Team />

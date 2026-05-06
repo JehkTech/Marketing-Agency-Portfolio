@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Menu, Moon, Sun, X } from 'lucide-react';
+import { Menu, MessageCircle, Moon, Phone, Sun, X } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface HeaderProps {
@@ -11,7 +11,7 @@ const navLinks = [
   { id: 'about', label: 'About' },
   { id: 'services', label: 'Services' },
   { id: 'process', label: 'Process' },
-  { id: 'case-study', label: 'Case Study' },
+  { id: 'case-study', label: 'Case Results' },
   { id: 'testimonials', label: 'Testimonials' },
   { id: 'team', label: 'Team' },
   { id: 'clients', label: 'Clients' },
@@ -106,12 +106,9 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
           </nav>
 
           <div className="hidden xl:flex items-center gap-3">
-            <a
-              href="tel:+260975219796"
-              className="text-sm text-foreground/65 hover:text-green-500 transition-colors"
-            >
-              Call: +260 975 219 796
-            </a>
+            <div className="px-3 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-xs text-foreground/80">
+              Avg response: under 2 hours
+            </div>
             <Button
               variant="ghost"
               size="icon"
@@ -154,6 +151,25 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
       {isMobileMenuOpen && (
         <div className="xl:hidden bg-background border-t border-border">
           <div className="px-4 py-6 space-y-3">
+            <div className="grid grid-cols-2 gap-2 pb-2">
+              <a
+                href="tel:+260975219796"
+                className="inline-flex items-center justify-center gap-1.5 py-2.5 rounded-lg border border-green-500/30 text-sm text-foreground/85 hover:bg-green-500/10 transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                Call
+              </a>
+              <a
+                href="https://wa.me/260975219796"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-1.5 py-2.5 rounded-lg border border-green-500/30 text-sm text-foreground/85 hover:bg-green-500/10 transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                WhatsApp
+              </a>
+            </div>
+
             {navLinks.map((link) => (
               <button
                 key={link.id}

@@ -137,7 +137,7 @@ export function Services() {
             <span className="text-green-500">SERVICES</span>
           </h2>
           <p className="text-lg sm:text-xl text-foreground/70 max-w-3xl mx-auto">
-            Comprehensive digital solutions designed to elevate your brand and drive measurable results
+            Premium strategy, content, and campaign execution designed to position your brand and increase qualified demand.
           </p>
         </div>
 
@@ -167,7 +167,7 @@ export function Services() {
                 {category.services.map((service, serviceIndex) => (
                   <div
                     key={service.name}
-                    className={`glass rounded-2xl p-6 hover:scale-105 transition-all duration-300 border border-green-500/20 ${
+                    className={`glass rounded-2xl p-6 hover:scale-[1.03] transition-all duration-300 border border-green-500/20 ${
                       isVisible
                         ? `animate-scale-in animation-delay-${
                             (categoryIndex + 1) * 200 + serviceIndex * 100

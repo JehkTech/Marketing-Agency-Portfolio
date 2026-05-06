@@ -72,37 +72,11 @@ export function Process() {
           </p>
         </div>
 
-        <div className="hidden md:block relative mb-12">
-          <div className="absolute top-12 left-[12.5%] right-[12.5%] h-px bg-green-500/20" />
-          <div className="grid grid-cols-4 gap-6">
-            {steps.map((step, index) => (
-              <div
-                key={step.step}
-                className={`${isVisible ? `animate-fade-in animation-delay-${(index + 1) * 100}` : 'opacity-0'}`}
-              >
-                <div className="glass rounded-3xl p-6 h-full border border-green-500/20 hover:scale-[1.02] transition-transform duration-300">
-                  <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-400 to-green-600 text-white flex items-center justify-center shadow-xl shadow-green-500/20 relative z-10">
-                    <span className="text-xl font-black">{step.step}</span>
-                  </div>
-                  <div className="text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-xs font-semibold mb-3">
-                      <step.icon className="w-4 h-4" />
-                      <span>{step.duration}</span>
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">{step.title}</h3>
-                    <p className="text-sm text-foreground/65 leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="md:hidden space-y-5 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 mb-12">
           {steps.map((step, index) => (
             <div
               key={step.step}
-              className={`glass rounded-2xl p-5 border border-green-500/20 ${
+              className={`glass rounded-2xl p-5 border border-green-500/20 h-full ${
                 isVisible ? `animate-slide-up animation-delay-${(index + 1) * 100}` : 'opacity-0'
               }`}
             >
@@ -110,13 +84,13 @@ export function Process() {
                 <div className="w-11 h-11 rounded-full bg-gradient-to-br from-green-400 to-green-600 text-white flex items-center justify-center flex-shrink-0 text-sm font-black">
                   {step.step}
                 </div>
-                <div>
+                <div className="min-w-0">
                   <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-green-500/10 text-green-500 text-xs font-semibold mb-2">
                     <step.icon className="w-3.5 h-3.5" />
                     <span>{step.duration}</span>
                   </div>
                   <h3 className="text-lg font-bold text-foreground">{step.title}</h3>
-                  <p className="text-sm text-foreground/65 mt-1.5">{step.description}</p>
+                  <p className="text-sm text-foreground/65 mt-1.5 leading-relaxed">{step.description}</p>
                 </div>
               </div>
             </div>

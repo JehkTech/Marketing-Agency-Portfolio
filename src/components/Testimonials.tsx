@@ -75,7 +75,7 @@ export function Testimonials() {
         <div className="absolute right-0 top-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`text-center mb-12 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6">
             <span className="text-foreground">CLIENT</span>{' '}
@@ -86,8 +86,8 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className={`${isVisible ? 'animate-scale-in animation-delay-200' : 'opacity-0'}`}>
-          <div className="glass rounded-3xl p-8 md:p-12 border border-green-500/20">
+        <div className={`grid grid-cols-1 xl:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)] gap-6 xl:gap-8 ${isVisible ? 'animate-scale-in animation-delay-200' : 'opacity-0'}`}>
+          <div className="glass rounded-3xl p-6 sm:p-8 md:p-12 border border-green-500/20">
             <div key={active.author} className="animate-fade-in">
               <div className="flex items-center gap-1 mb-5">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -125,24 +125,20 @@ export function Testimonials() {
               ))}
             </div>
           </div>
-        </div>
 
-        <div
-          className={`mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 ${
-            isVisible ? 'animate-fade-in animation-delay-400' : 'opacity-0'
-          }`}
-        >
-          {[
-            { value: '50+', label: 'Happy Clients' },
-            { value: '200+', label: 'Projects Delivered' },
-            { value: '4.9/5', label: 'Average Rating' },
-            { value: '98%', label: 'Retention' },
-          ].map((stat) => (
-            <div key={stat.label} className="glass rounded-xl p-4 border border-green-500/15 text-center">
-              <div className="text-2xl font-bold text-green-500">{stat.value}</div>
-              <div className="text-xs text-foreground/60 mt-1">{stat.label}</div>
-            </div>
-          ))}
+          <div className="grid grid-cols-2 gap-4 content-start">
+            {[
+              { value: '50+', label: 'Happy Clients' },
+              { value: '200+', label: 'Projects Delivered' },
+              { value: '4.9/5', label: 'Average Rating' },
+              { value: '98%', label: 'Retention' },
+            ].map((stat) => (
+              <div key={stat.label} className="glass rounded-xl p-4 border border-green-500/15 text-center">
+                <div className="text-2xl font-bold text-green-500">{stat.value}</div>
+                <div className="text-xs text-foreground/60 mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

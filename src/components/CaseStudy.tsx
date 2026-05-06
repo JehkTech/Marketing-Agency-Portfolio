@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Button } from './ui/button';
-
-const galleryImages = [
-  '/images/6M2B3586.jpg',
-  '/images/6M2B3648.jpg',
-  '/images/6M2B3651.jpg',
-  '/images/6M2B3655.jpg',
-];
+import { portfolioFrames } from '../data/portfolioFrames';
 
 const stats = [
   { label: 'Campaign Duration', value: '6 Months' },
   { label: 'Content Pieces', value: '120+' },
-  { label: 'Engagement Increase', value: '340%' },
-  { label: 'Brand Reach', value: '2.5M+' },
+  { label: 'Engagement Lift', value: '340%' },
+  { label: 'Qualified Reach', value: '2.5M+' },
 ];
 
 const outcomes = [
@@ -24,12 +18,28 @@ const outcomes = [
   'Reusable creative assets that lowered monthly production overhead',
 ];
 
-export function CaseStudy() {
+const positioningPoints = [
+  'Strategy and creative under one team',
+  'Weekly reporting tied to business outcomes',
+  'Execution speed without sacrificing quality',
+];
+
+interface CaseStudyProps {
+  onOpenPortfolio?: (id: number) => void;
+}
+
+export function CaseStudy({ onOpenPortfolio }: CaseStudyProps) {
   const { ref, isVisible } = useScrollAnimation();
-  const [activeImage, setActiveImage] = useState(0);
 
   const scrollToContact = () => {
     const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToServices = () => {
+    const element = document.getElementById('services');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -54,57 +64,60 @@ export function CaseStudy() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`mb-16 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
           <div className="inline-block px-4 py-2 bg-green-500/20 rounded-full mb-4">
-            <span className="text-green-400 text-sm font-semibold tracking-wider uppercase">
+            <span className="text-green-300 text-sm font-semibold tracking-wider uppercase">
               Featured Case Study
             </span>
           </div>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-4">
-            Growth Campaign Snapshot
+            From Content Chaos To Predictable Growth
           </h2>
-          <div className="h-2 w-32 bg-gradient-to-r from-green-500 to-green-400 rounded-full" />
+          <p className="text-white/75 max-w-3xl text-lg">
+            We rebuilt this brand&apos;s strategy, creative system, and campaign execution to convert
+            attention into qualified demand.
+          </p>
+          <div className="h-2 w-32 bg-gradient-to-r from-green-500 to-green-400 rounded-full mt-6" />
         </div>
 
-        <div className={`mb-12 ${isVisible ? 'animate-scale-in animation-delay-200' : 'opacity-0'}`}>
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video">
-            <ImageWithFallback
-              src={galleryImages[activeImage]}
-              alt={`Case study image ${activeImage + 1}`}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-green-950/45 via-transparent to-transparent" />
-          </div>
-          <div className="grid grid-cols-4 gap-3 mt-4">
-            {galleryImages.map((image, index) => (
-              <button
-                key={image}
-                onClick={() => setActiveImage(index)}
-                className={`relative rounded-lg overflow-hidden aspect-video transition-all ${
-                  activeImage === index
-                    ? 'ring-2 ring-green-400 scale-[1.02]'
-                    : 'opacity-65 hover:opacity-100'
-                }`}
-                aria-label={`Show gallery image ${index + 1}`}
-              >
-                <ImageWithFallback
-                  src={image}
-                  alt={`Thumbnail ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </button>
-            ))}
-          </div>
+        <div className={`mb-12 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 ${isVisible ? 'animate-scale-in animation-delay-200' : 'opacity-0'}`}>
+          {portfolioFrames.map((frame) => (
+            <a
+              key={frame.id}
+              href={`/portfolio/${frame.id}`}
+              onClick={(event) => {
+                if (!onOpenPortfolio) {
+                  return;
+                }
+
+                event.preventDefault();
+                onOpenPortfolio(frame.id);
+              }}
+              className="group relative rounded-2xl overflow-hidden shadow-xl aspect-[4/5] sm:aspect-[3/4] border border-green-500/25 block transition-transform hover:scale-[1.02]"
+            >
+              <ImageWithFallback
+                src={frame.src}
+                alt={frame.label}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                rootMargin="450px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-green-950/80 via-green-950/20 to-transparent" />
+              <div className="absolute left-4 right-4 bottom-4">
+                <p className="text-sm sm:text-base font-semibold tracking-wide text-green-300 drop-shadow-md mb-1">{frame.label}</p>
+                <p className="text-xs sm:text-sm text-white/90 line-clamp-2 drop-shadow-sm">{frame.caption}</p>    
+              </div>
+            </a>
+          ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] gap-12 items-start">
           <div className={`${isVisible ? 'animate-slide-right animation-delay-300' : 'opacity-0'}`}>
             <div className="space-y-6 text-white/90">
-              <p className="text-lg leading-relaxed">
-                We designed and executed a full-funnel campaign system combining premium
-                visuals, conversion-focused messaging, and channel-specific distribution.
+              <p className="text-lg leading-relaxed max-w-2xl">
+                Most agencies deliver either strategy decks or creative assets. We deliver both,
+                then connect them to real campaign performance.
               </p>
-              <p className="text-lg leading-relaxed">
-                The result was not just better-looking content, but stronger positioning,
-                better-performing campaigns, and a scalable content engine for growth.
+              <p className="text-lg leading-relaxed max-w-2xl">
+                This integration helped the client increase engagement, sharpen positioning, and
+                scale faster with a repeatable growth engine.
               </p>
 
               <div className="space-y-3 pt-2">
@@ -116,17 +129,34 @@ export function CaseStudy() {
                 ))}
               </div>
 
-              <Button
-                onClick={scrollToContact}
-                className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 mt-2"
-              >
-                Plan My Campaign
-              </Button>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                {positioningPoints.map((point) => (
+                  <div key={point} className="rounded-xl border border-green-500/20 bg-green-500/10 px-3 py-3 text-sm text-white/90">
+                    {point}
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <Button
+                  onClick={scrollToContact}
+                  className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6"
+                >
+                  Build My Growth Plan
+                </Button>
+                <Button
+                  onClick={scrollToServices}
+                  variant="outline"
+                  className="border-green-400 text-green-300 hover:bg-green-500 hover:text-white"
+                >
+                  Explore Services
+                </Button>
+              </div>
             </div>
           </div>
 
           <div className={`${isVisible ? 'animate-slide-left animation-delay-400' : 'opacity-0'}`}>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 xl:sticky xl:top-28">
               {stats.map((stat) => (
                 <div key={stat.label} className="glass rounded-xl p-5 border border-green-500/20">
                   <div className="text-2xl sm:text-3xl font-bold text-green-400 mb-1">{stat.value}</div>

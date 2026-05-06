@@ -279,6 +279,15 @@ html {
   width: 10px;
 }
 
+.team-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.team-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
