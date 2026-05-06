@@ -86,7 +86,7 @@ export default function Team() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-6 xl:gap-8">
           {team.map((member, index) => (
             <ScrollReveal
-              key={index}
+              key={member.name}
               variant="fadeUp"
               delay={index * 0.1}
               className={index < 2 ? 'xl:col-span-6' : 'xl:col-span-4'}
