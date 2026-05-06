@@ -15,6 +15,7 @@ import { ScrollProgress } from './components/ScrollProgress';
 import { ScrollToTop } from './components/ScrollToTop';
 import { FloatingCTA } from './components/FloatingCTA';
 import { PortfolioDetail } from './components/PortfolioDetail';
+import { Analytics } from "@vercel/analytics/next";
 
 export default function App() {
   const [isDark, setIsDark] = useState(true);
@@ -107,6 +108,8 @@ export default function App() {
         <Team />
         <Clientele />
         <Contact />
+
+        <Analytics />
       </main>
       <Footer />
       <FloatingCTA />
