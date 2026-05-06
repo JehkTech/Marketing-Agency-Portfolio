@@ -91,7 +91,7 @@ export default function Team() {
               delay={index * 0.1}
               className={index < 2 ? 'xl:col-span-6' : 'xl:col-span-4'}
             >
-              <Card hover className="h-full text-center p-7">
+              <Card hover className="h-full text-center">
                 <div className="relative w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-kinertic-gold/20 to-kinertic-purple/20 overflow-hidden shadow-inner ring-1 ring-white/10">
                   <Image
                     src={member.image}
