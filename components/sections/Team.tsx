@@ -2,6 +2,7 @@
 
 'use client'
 
+import Image from 'next/image'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import Card from '@/components/ui/Card'
 import SectionHeader from '@/components/ui/SectionHeader'
@@ -82,22 +83,29 @@ export default function Team() {
           centered
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-6 xl:gap-8">
           {team.map((member, index) => (
-            <ScrollReveal key={index} variant="fadeUp" delay={index * 0.1}>
-              <Card hover className="text-center">
-                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-kinertic-gold/20 to-kinertic-purple/20 overflow-hidden shadow-inner">
-                  <img
+            <ScrollReveal
+              key={member.name}
+              variant="fadeUp"
+              delay={index * 0.1}
+              className={index < 2 ? 'xl:col-span-6' : 'xl:col-span-4'}
+            >
+              <Card hover className="h-full text-center">
+                <div className="relative w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-kinertic-gold/20 to-kinertic-purple/20 overflow-hidden shadow-inner ring-1 ring-white/10">
+                  <Image
                     src={member.image}
                     alt={`${member.name} headshot`}
-                    className="w-full h-full object-cover"
+                    className="object-cover"
                     loading="lazy"
+                    fill
+                    sizes="128px"
                   />
                 </div>
 
                 <h3 className="text-xl font-bold mb-1">{member.name}</h3>
                 <p className="text-kinertic-gold text-sm mb-4">{member.role}</p>
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                <p className="text-gray-400 text-sm leading-relaxed mb-6 min-h-[72px]">
                   {member.bio}
                 </p>
 
