@@ -1,96 +1,88 @@
-# Kinertic Media Arts (Vite + React)
+# Kinertic Media Arts
 
-Marketing site frontend built with **React 18 + Vite**. The homepage is composed of section components (Hero → Contact) and includes a dark/light theme toggle, scroll progress, and conversion-focused CTAs.
+Kinertic Media Arts is a Next.js App Router website for a digital marketing agency.  
+The `lightdesign` branch contains the migrated Next architecture, refreshed design system, and a production-ready contact email flow.
 
-## Requirements
+## Stack
 
-- Node.js (modern LTS recommended)
-- npm
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Resend (contact email delivery)
+- Vercel Analytics
 
-## Quick start
+## Project Structure
+
+```text
+kinertic-media-arts/
+  app/
+    layout.tsx
+    page.tsx
+    portfolio/page.tsx
+    api/contact/route.ts
+  components/
+    sections/
+    ui/
+    animations/
+  lib/
+  public/
+  styles/
+```
+
+## Local Setup
+
+1. Install dependencies:
 
 ```bash
-npm i
+npm install
+```
+
+2. Create `.env.local`:
+
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+RESEND_API_KEY=re_xxxxxxxxxxxx
+CONTACT_EMAIL=kinerticmedia97@gmail.com
+CONTACT_FROM=noreply@kinerticmediaarts.com
+```
+
+3. Run locally:
+
+```bash
 npm run dev
 ```
 
-Vite will start on `http://localhost:3000` (see `vite.config.ts`).
-
-## Build
+4. Verify core checks:
 
 ```bash
+pnpm type-check
+npm run lint
 npm run build
 ```
 
-- Output directory: `build/` (see `vite.config.ts`)
+## Contact Email Flow
 
-## Documentation
+The contact section posts to `POST /api/contact`.
 
-- `docs/ENVIRONMENT.md`: environment variables and `.env` files
-- `docs/DEPLOYMENT.md`: production build + hosting notes
-- `docs/PROJECT_STRUCTURE.md`: where things live, how the page is composed
-- `docs/TROUBLESHOOTING.md`: common fixes
+- Client validation runs in `components/sections/Contact.tsx`.
+- Server validation, anti-spam checks, and rate limiting run in `app/api/contact/route.ts`.
+- Resend sends:
+  - an internal notification email to `CONTACT_EMAIL`
+  - an acknowledgment email to the submitter
 
-## Project notes
+Response contract:
 
-- **Entry point**: `src/main.tsx`
-- **App composition**: `src/App.tsx`
-- **Sections**: `src/components/*` (Hero, About, Services, Process, CaseStudy, Testimonials, Vision/Mission/Values, Team, Clients, Contact, Footer)
-- **UI primitives**: `src/components/ui/*` (Radix + shadcn-style components)
-- **Static assets**: `public/images`, `public/logos`
-- **Styling**: `src/index.css` (global styles)
+```json
+{ "success": true, "message": "Message sent successfully." }
+```
 
-## Environment variables
+```json
+{ "success": false, "message": "..." }
+```
 
-This repo currently does **not** reference `import.meta.env` anywhere, but a local `.env.local` exists for future integrations (contact form email delivery, analytics, etc.). For the canonical list and safe defaults, see `docs/ENVIRONMENT.md` and use `.env.example` as a starting point.
+## Deployment
 
-## Latest documented update
-
-Date: **April 2, 2026**  
-Branch: **`lightdesign`**
-
-### Summary
-
-The `lightdesign` experience was upgraded to preserve its lighter visual style while adopting the stronger conversion flow, interactions, and production media from the `kinertic-media-arts` implementation.
-
-### What changed
-
-- Reordered homepage flow in `src/App.tsx` to:
-  `Hero -> About -> Services -> Process -> Case Study -> Testimonials -> Vision/Mission/Values -> Team -> Clients -> Contact`
-- Improved navigation/header behavior in `src/components/Header.tsx`:
-  - active section highlighting
-  - expanded nav structure
-  - improved mobile menu behavior
-  - stronger top-level CTA visibility
-- Added new conversion-focused sections:
-  - `src/components/Process.tsx`
-  - `src/components/Testimonials.tsx`
-- Added floating contact action menu:
-  - `src/components/FloatingCTA.tsx`
-- Updated existing sections with real project assets and stronger content:
-  - `src/components/CaseStudy.tsx`
-  - `src/components/Team.tsx`
-  - `src/components/Clientele.tsx`
-  - `src/components/Contact.tsx`
-  - `src/components/Footer.tsx`
-- Adjusted scroll-to-top placement to avoid overlap with floating CTA:
-  - `src/components/ScrollToTop.tsx`
-
-### Media migration (from `kinertic-media-arts`)
-
-Added real image/logo assets into this branch:
-
-- `public/images/6M2B3586.jpg`
-- `public/images/6M2B3648.jpg`
-- `public/images/6M2B3651.jpg`
-- `public/images/6M2B3655.jpg`
-- `public/images/KIN05484.JPG`
-- `public/images/detox.png`
-- `public/images/lpgb.png`
-- `public/images/prnd.png`
-- `public/logos/clientele.png`
-
-### Verification
-
-- Production build was run successfully after the update:
-  `npm run build -- --outDir .tmp-build`
+Primary target is Vercel.  
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for staging/production steps, sender-domain verification, smoke tests, and rollback.
