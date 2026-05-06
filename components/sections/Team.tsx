@@ -99,7 +99,7 @@ export default function Team() {
                     className="object-cover"
                     loading="lazy"
                     fill
-                    sizes="(max-width: 768px) 128px, 128px"
+                    sizes="128px"
                   />
                 </div>
 
