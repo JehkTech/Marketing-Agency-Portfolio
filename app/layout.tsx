@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import LenisScroll from "@/components/animations/LenisScroll";
 import AdvancedScrollProgressBar from "@/components/ui/AdvancedScrollProgressBar";
+import { Analytics } from "@vercel/analytics/next"
 
 
 const inter = Inter({
@@ -75,6 +76,8 @@ export default function RootLayout({
           showPercentage={true}
           showSectionDots={false}
         />
+        
+        <Analytics />
 
         <LenisScroll>{children}</LenisScroll>
       </body>
