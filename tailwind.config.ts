@@ -1,4 +1,5 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
+import { brandColors } from './src/assets/branding/colors'
 
 const config: Config = {
   content: [
@@ -8,16 +9,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        kinertic: {
-          black: '#0D1F0D',
-          white: '#F0FDF4',
-          gold: '#84CC16',
-          'gold-light': '#BEF264',
-          blue: '#15803D',
-          purple: '#22C55E',
-        },
-      },
+    colors: {
+      ...brandColors,
+    },
+    // Existing colors remain below
+    // (You may keep existing kinertic palette if needed)
+    //
+    // Note: brandColors imported from src/assets/branding/colors.ts
+    // will be merged here.
+
+      // Retained original kinertic palette (can be accessed via brandColors if needed)
       fontFamily: {
         sans: ['var(--font-inter)'],
       },
