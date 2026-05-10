@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react'
  * import ThemeToggle from '@/components/ThemeToggle'
  * 
  * <nav className="flex items-center justify-between">
- *   {/* other nav items */}
  *   <ThemeToggle />
  *   <button>Get a Quote</button>
  * </nav>
