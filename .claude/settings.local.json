@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "WebFetch(domain:www.instagram.com)",
+      "Bash(curl -s https://www.instagram.com/kinertic_marketing/)",
+      "Bash(curl -s -A 'Mozilla/5.0' 'https://www.instagram.com/kinertic_marketing/?__a=1')"
     ]
   }
 }

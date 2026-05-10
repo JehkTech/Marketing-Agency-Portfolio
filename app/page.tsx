@@ -62,7 +62,7 @@
 // Key change: Testimonials now sits after CaseStudy ("proof then peer validation")
 // rather than nowhere. Process sits before CaseStudy to prime the reader.
 
-import Navbar from '@/components/sections/Navbar'
+import Navbar from '@/components/Navbar'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
 import VisionMissionValues from '@/components/sections/VisionMissionValues'

@@ -11,6 +11,16 @@ const config: Config = {
     extend: {
     colors: {
       ...brandColors,
+      primary: {
+    900: '#1B5E20',  // Forest Green (main)
+    800: '#2E7D32',  // Kelly Green (hover)
+    // ... full palette in docs
+  },
+  accent: {
+    DEFAULT: '#9CCC65',  // Lime
+    bright: '#7FD842',   // Neon
+  },
+      
     },
     // Existing colors remain below
     // (You may keep existing kinertic palette if needed)
@@ -54,5 +64,6 @@ const config: Config = {
     },
   },
   plugins: [],
+
 }
 export default config
