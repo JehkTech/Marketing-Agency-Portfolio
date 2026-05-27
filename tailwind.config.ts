@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 import { brandColors } from './src/assets/branding/colors'
 
+
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',

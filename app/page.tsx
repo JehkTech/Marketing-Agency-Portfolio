@@ -12,9 +12,9 @@
 
 // /**
 //  * Home Page
-//  * 
+//  *
 //  * Main landing page assembling all sections
-//  * 
+//  *
 //  * Structure follows conversion funnel:
 //  * 1. Hero - Capture attention
 //  * 2. About - Build credibility
@@ -62,19 +62,20 @@
 // Key change: Testimonials now sits after CaseStudy ("proof then peer validation")
 // rather than nowhere. Process sits before CaseStudy to prime the reader.
 
-import Navbar from '@/components/Navbar'
-import Hero from '@/components/sections/Hero'
-import About from '@/components/sections/About'
-import VisionMissionValues from '@/components/sections/VisionMissionValues'
-import Services from '@/components/sections/Services'
-import Process from '@/components/sections/Process'
-import CaseStudy from '@/components/sections/CaseStudy'
-import Testimonials from '@/components/sections/Testimonials'
-import Team from '@/components/sections/Team'
-import Clients from '@/components/sections/Clients'
-import Contact from '@/components/sections/Contact'
-import Footer from '@/components/sections/Footer'
-import FloatingCTA from '@/components/ui/FloatingCTA'
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
+import VisionMissionValues from "@/components/sections/VisionMissionValues";
+import Services from "@/components/sections/Services";
+import Process from "@/components/sections/Process";
+import CaseStudy from "@/components/sections/CaseStudy";
+import Testimonials from "@/components/sections/Testimonials";
+// import Team from "@/components/sections/Team";
+import Clients from "@/components/sections/Clients";
+import Contact from "@/components/sections/Contact";
+import Footer from "@/components/sections/Footer";
+import FloatingCTA from "@/components/ui/FloatingCTA";
+import TeamSection from '@/components/sections/TeamSection';
 
 export default function Home() {
   return (
@@ -88,12 +89,13 @@ export default function Home() {
         <CaseStudy />
         <Testimonials />
         <VisionMissionValues />
-        <Team />
+        {/* <Team /> */}
+        <TeamSection />
         <Clients />
         <Contact />
         <Footer />
       </main>
       <FloatingCTA />
     </>
-  )
+  );
 }
