@@ -41,29 +41,30 @@ export default function ThemeToggle() {
 
   // Single effect that doesn't set state during execution
   useEffect(() => {
-    try {
-      // 1. Check localStorage first
-      const saved = localStorage.getItem('theme-preference')
-      
-      if (saved) {
-        // User previously selected a theme
-        const isDarkMode = saved === 'dark'
-        // Apply theme BEFORE setting state to avoid cascading renders
-        applyTheme(isDarkMode)
-        setIsDark(isDarkMode)
-      } else {
-        // 2. Check system preference
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-        applyTheme(prefersDark)
-        setIsDark(prefersDark)
+    const frame = window.requestAnimationFrame(() => {
+      try {
+        // 1. Check localStorage first
+        const saved = localStorage.getItem('theme-preference')
+
+        if (saved) {
+          const isDarkMode = saved === 'dark'
+          applyTheme(isDarkMode)
+          setIsDark(isDarkMode)
+        } else {
+          // 2. Check system preference
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          applyTheme(prefersDark)
+          setIsDark(prefersDark)
+        }
+      } catch (e) {
+        console.error('Theme initialization error:', e)
+        setIsDark(false)
       }
-    } catch (e) {
-      console.error('Theme initialization error:', e)
-      setIsDark(false)
-    }
-    
-    // Set mounted LAST after all other logic completes
-    setMounted(true)
+
+      setMounted(true)
+    })
+
+    return () => window.cancelAnimationFrame(frame)
   }, [])
 
   const toggleTheme = () => {

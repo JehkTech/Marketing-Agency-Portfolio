@@ -81,13 +81,11 @@ export default function TeamSection() {
       id="team"
       className="relative py-24 px-6 overflow-hidden"
     >
-      {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-var(--color-primary-900)/5 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent dark:via-white/10" />
       </div>
 
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
@@ -96,14 +94,13 @@ export default function TeamSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-black mb-6">
-            <span className="text-var(--color-primary-900)">Our Team</span>
+            <span className="text-[var(--color-primary-900)]">Our Team</span>
           </h2>
-          <p className="text-lg text-var(--color-text-secondary) max-w-2xl mx-auto">
-            A collective of strategists, creatives, and technologists obsessed with building brands that matter
+          <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+            A collective of strategists, creatives, and technologists obsessed with building brands that matter.
           </p>
         </motion.div>
 
-        {/* Team Grid */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8"
           variants={containerVariants}
@@ -112,15 +109,13 @@ export default function TeamSection() {
           viewport={{ once: true, margin: '-100px' }}
         >
           {teamMembers.map((member) => (
-            <motion.div
+            <motion.article
               key={member.id}
               variants={itemVariants}
               className="group relative"
             >
-              {/* Card Container */}
-              <div className="relative h-full flex flex-col">
-                {/* Image Container */}
-                <div className="relative mb-6 overflow-hidden rounded-3xl bg-var(--color-light-gray) aspect-square">
+              <div className="relative h-full flex flex-col rounded-[1.75rem] border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-4 shadow-[var(--shadow-sm)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-md)]">
+                <div className="relative mb-6 aspect-square overflow-hidden rounded-[1.5rem] bg-[var(--color-light-gray)]">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -128,30 +123,28 @@ export default function TeamSection() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-var(--color-primary-900)/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:to-white/10" />
                 </div>
 
-                {/* Info */}
                 <div className="flex-1 flex flex-col">
-                  <h3 className="text-lg font-bold mb-1 text-var(--color-text) line-clamp-2">
+                  <h3 className="text-lg font-bold mb-1 text-[var(--color-text)] line-clamp-2">
                     {member.name}
                   </h3>
-                  <p className="text-sm font-semibold text-var(--color-primary-800) mb-3 uppercase tracking-wider">
+                  <p className="text-sm font-semibold text-[var(--color-primary-800)] mb-3 uppercase tracking-wider">
                     {member.role}
                   </p>
-                  <p className="text-xs text-var(--color-text-secondary) line-clamp-2">
+                  <p className="text-xs text-[var(--color-text-secondary)] line-clamp-2">
                     {member.bio}
                   </p>
 
-                  {/* Rating Stars */}
-                  <div className="flex gap-1 mt-auto pt-4">
+                  <div className="mt-auto flex gap-1 pt-4" aria-label={`${member.name} rating`}>
                     {[...Array(5)].map((_, i) => (
                       <svg
                         key={i}
-                        className="w-3 h-3 text-var(--color-primary-800)"
+                        className="w-3 h-3 text-[var(--color-primary-800)]"
                         fill="currentColor"
                         viewBox="0 0 20 20"
+                        aria-hidden="true"
                       >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
@@ -159,11 +152,10 @@ export default function TeamSection() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
 
-        {/* Bottom CTA */}
         <motion.div
           className="mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -171,12 +163,12 @@ export default function TeamSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <p className="text-lg text-var(--color-text-secondary) mb-8">
+          <p className="text-lg text-[var(--color-text-secondary)] mb-8">
             Ready to work with our team? Let's build something incredible together.
           </p>
           <a
             href="#contact"
-            className="inline-block px-8 py-4 bg-var(--color-primary-800) text-white rounded-full font-bold hover:bg-var(--color-primary-900) transition-colors duration-300"
+            className="inline-block px-8 py-4 bg-[var(--color-primary-800)] text-white rounded-full font-bold hover:bg-[var(--color-primary-900)] transition-colors duration-300"
           >
             Get in Touch
           </a>

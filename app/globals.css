@@ -41,36 +41,31 @@
   --radius-lg: 12px;
 }
 
-/* Dark Mode Variables */
+/* Dark Mode Variables for first paint before JS sets data-theme */
 @media (prefers-color-scheme: dark) {
-  :root {
-    /* Primary Colors (adjusted for dark mode) */
+  :root:not([data-theme]) {
     --color-primary-900: #4CAF50;
     --color-primary-800: #66BB6A;
     --color-primary-700: #81C784;
     --color-primary-dark: #388E3C;
-    
-    /* Accent Colors */
+
     --color-accent: #A5D6A7;
     --color-accent-bright: #C8E6C9;
     --color-accent-light: #1B5E20;
-    
-    /* Neutrals (inverted) */
+
     --color-black: #FFFFFF;
     --color-dark-gray: #E0E0E0;
     --color-medium-gray: #B0B0B0;
     --color-light-gray: #2A2A2A;
     --color-off-white: #1A1A1A;
     --color-white: #0D0D0D;
-    
-    /* Text & Background */
+
     --color-text: #FFFFFF;
     --color-text-secondary: #B0B0B0;
     --color-bg: #0D0D0D;
     --color-bg-secondary: #1A1A1A;
     --color-border: #2A2A2A;
-    
-    /* Effects */
+
     --shadow-sm: 0 2px 8px rgba(46, 125, 50, 0.2);
     --shadow-md: 0 4px 12px rgba(46, 125, 50, 0.3);
   }
@@ -107,6 +102,22 @@
   /* Effects */
   --shadow-sm: 0 2px 8px rgba(46, 125, 50, 0.2);
   --shadow-md: 0 4px 12px rgba(46, 125, 50, 0.3);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 /* Reset & Base */

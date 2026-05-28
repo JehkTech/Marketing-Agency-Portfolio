@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 import LenisScroll from "@/components/animations/LenisScroll";
 import AdvancedScrollProgressBar from "@/components/ui/AdvancedScrollProgressBar";
 import { Analytics } from "@vercel/analytics/next";
@@ -70,9 +71,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <Script id="theme-bootstrap" strategy="beforeInteractive">
+          {`(function(){try{var storageKey='theme-preference';var saved=null;try{saved=localStorage.getItem(storageKey)}catch(e){}var savedTheme=saved;var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=savedTheme||(prefersDark?'dark':'light');var root=document.documentElement;root.setAttribute('data-theme',theme);if(theme==='dark'){root.classList.add('dark');root.classList.remove('light')}else{root.classList.add('light');root.classList.remove('dark')} }catch(e){} })();`}
+        </Script>
+      </head>
       <body className={inter.className}>
-
         <AdvancedScrollProgressBar
           variant="premium"
           showPercentage={true}
