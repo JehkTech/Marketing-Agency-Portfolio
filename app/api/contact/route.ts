@@ -14,6 +14,7 @@ const WINDOW_MS = 10 * 60 * 1000;
 const MAX_REQUESTS = 5;
 const MAX_PAYLOAD_BYTES = 16 * 1024;
 const MIN_FORM_FILL_MS = 1500;
+const TEST_MODE = process.env.CONTACT_EMAIL_TEST_MODE === "1";
 
 const ipHits = new Map<string, { count: number; resetAt: number }>();
 
@@ -92,6 +93,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { success: false, message: validated.message },
         { status: validated.status }
+      );
+    }
+
+    if (TEST_MODE) {
+      return NextResponse.json(
+        { success: true, message: "Message sent successfully." },
+        { status: 200 }
       );
     }
 

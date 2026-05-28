@@ -1,0 +1,7 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Kinertic apple icon</title>
+  <desc id="desc">Dark square with a white circle and a black K monogram.</desc>
+  <rect width="180" height="180" fill="#101114"/>
+  <circle cx="90" cy="90" r="70" fill="#FFFFFF"/>
+  <text x="90" y="113" text-anchor="middle" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="900">K</text>
+</svg>

@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon-512.png",
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
@@ -73,6 +73,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <Script id="theme-bootstrap" strategy="beforeInteractive">
           {`(function(){try{var storageKey='theme-preference';var saved=null;try{saved=localStorage.getItem(storageKey)}catch(e){}var savedTheme=saved;var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=savedTheme||(prefersDark?'dark':'light');var root=document.documentElement;root.setAttribute('data-theme',theme);if(theme==='dark'){root.classList.add('dark');root.classList.remove('light')}else{root.classList.add('light');root.classList.remove('dark')} }catch(e){} })();`}
         </Script>

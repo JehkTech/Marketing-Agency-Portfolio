@@ -81,7 +81,7 @@ export default function Navbar() {
               {/* Logo */}
               <a href="#" className="flex items-center gap-3 group">
                 <img
-                  src="/branding/logo.svg"
+                  src="/branding/Kinertic%20Logo_687487347_1331703762199665_6613845951636569543_n.jpg"
                   alt="Kinertic Logo"
                   className="w-9 h-9"
                 />

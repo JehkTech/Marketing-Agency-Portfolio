@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Kinertic icon</title>
+  <desc id="desc">Dark square with a white circle and a black K monogram.</desc>
+  <rect width="512" height="512" fill="#101114"/>
+  <circle cx="256" cy="256" r="198" fill="#FFFFFF"/>
+  <text x="256" y="308" text-anchor="middle" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="190" font-weight="900">K</text>
+</svg>
